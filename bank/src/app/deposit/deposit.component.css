@@ -1,0 +1,22 @@
+
+
+
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.login,
+.image {
+  min-height: 100vh;
+
+}
+
+.bg-image {
+  background-size: cover;
+}
+
+

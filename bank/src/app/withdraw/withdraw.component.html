@@ -1,0 +1,109 @@
+<section>
+  <section class="bg-image vh-100"
+style="background-image: url('https://media.istockphoto.com/photos/person-is-paying-with-swedish-money-200-bill-picture-id1077275102?k=6&m=1077275102&s=170667a&w=0&h=QAeIlBC0MsqgEBcqo4wfc7rp0KUKajNaTSu4BowJI6Y=');background-size: cover;">
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand fs-3" href="/dashboard"><i class="fa-solid fa-building-columns"></i> Net Banking</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fs-5 " href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" routerLink="/deposit"> Deposit</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample" (click)="getBalance()"> Balance Enquiry</a></li>
+              <li><a class="dropdown-item" routerLink="/transaction"> Transaction History</a></li>
+
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Account Statement</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="mb-5">
+        <img src="https://cdn0.iconfinder.com/data/icons/analytic-investment-and-balanced-scorecard/512/43_Balance_law_justice_finance-256.png" alt="">
+      </div>
+      <div style="font-size: 20px;">
+        Hi <b style="color: rgb(138, 86, 86);">{{user}}</b>,<br>
+        <span>{{balance}}</span>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <div class="container-fluid">
+  
+    
+    <div class="row no-gutter">
+      
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+  
+  
+        <!-- The content half -->
+        <div class="col-md-6" >
+            <div class="login d-flex align-items-center py-5">
+  
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4 mb-5"  style="color:rgb(247, 249, 251) ;">Withdraw Form</h3>
+                            <form (ngSubmit)="withdraw()" [formGroup] = "withdrawForm" >
+                              <div class="form-group mb-3">
+                                    <input formControlName ='acno'  type="email" placeholder="Account Number" name="acno"  class="form-control rounded-pill border-0 shadow-sm px-4">
+  
+                                    <div *ngIf =" this.withdrawForm.get('acno')?.errors&& this.withdrawForm.get('acno')?.touched" class=" text-danger">
+                                      Invalid Account Number
+                                      </div>
+                          
+                                </div>
+                                <div class="form-group mb-3">
+                                  <input formControlName ='pswd'  type="password" placeholder="Password" name="pswd" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+  
+                                  <div *ngIf =" this.withdrawForm.get('pswd')?.errors&& this.withdrawForm.get('pswd')?.touched" class=" text-danger">
+                                    Invalid password
+                                    </div>
+                        
+                              </div>
+  
+                                <div class="form-group mb-3">
+                                    <input formControlName ='amount'  type="amount" placeholder="Amount" name="amount"  class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+  
+                                    <div *ngIf =" this.withdrawForm.get('amount')?.errors&& this.withdrawForm.get('amount')?.touched" class=" text-danger">
+                                      Invalid amount
+                                    </div>
+                                    <div style="color: red;"><b>{{eMsg}}</b></div>
+
+            
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm mt-3">Withdraw</button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- End -->
+  
+            </div>
+        </div><!-- End -->
+  
+    </div>
+  </div>
+
+  </section>
+  
+  

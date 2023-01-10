@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fs-3" href="/dashboard"><i class="fa-solid fa-building-columns"></i> Net Banking</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fs-5 " href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" routerLink ="/deposit">Deposit</a></li>
+              <li><a class="dropdown-item" routerLink="/withdraw"> Withdraw</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample" (click)="getBalance()"> Balance Enquiry</a></li>
+
+              
+
+
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title " id="offcanvasExampleLabel">Account Statement</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="mb-5">
+        <img src="https://cdn0.iconfinder.com/data/icons/analytic-investment-and-balanced-scorecard/512/43_Balance_law_justice_finance-256.png" alt="">
+      </div>
+      <div style="font-size: 20px;">
+        Hi <b style="color: rgb(138, 86, 86);">{{user}}</b>,<br>
+        <span>{{balance}}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <div class="mt-5">
+        <h1 style="color: rgb(7, 110, 174); ">Transactions</h1>
+      </div>
+    
+
+
+<table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col" style="color: rgb(48, 142, 48);font-weight: 400;" class="fs-3">Transaction History</th>
+        <th scope="col">Search By: <input (keyup)="search($event)" type="text" placeholder="Transaction type" style="border-radius: 5px;"></th>
+        <th scope="col"><button (click)="generatePdf()" style="float:right ;" type="button" class="btn btn-success">Export</button></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Transaction Type</th>
+            <th scope="col">Amount</th>
+          </tr>
+    
+      <tr *ngFor = "let trans of transactions | filter:searchKey:'type'; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{trans.type}}</td>
+        <td>{{trans.amount}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>

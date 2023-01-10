@@ -1,0 +1,70 @@
+
+
+
+
+<section class="vh-100 bg-image"
+  style="background-image: url('https://images.squarespace-cdn.com/content/v1/5c8545b5348cd967825a22e1/1554340131158-5J69EURDHIAYQJJYPFPL/ke17ZwdGBToddI8pDm48kO4guELqrbhxX1k2T-bY4I8UqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKca5wmnK7yQ-eHoGCaKe7lJ9hh35HdB3mzW3eZhEV0C_yMZ23cwwZuxGZgozZd_8qd/network+background.png');background-size: cover;">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+			  <form (ngSubmit)="register()" [formGroup] = "registerForm">
+
+                <div class="form-outline mb-4">
+                  <input formControlName ='username' name="username" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1cg">User Name</label>
+				  <div *ngIf =" this.registerForm.get('username')?.errors&& this.registerForm.get('username')?.touched" class=" text-danger ">
+					Invalid Username
+				  </div>
+
+                </div>
+
+
+                <div class="form-outline mb-4">
+                  <input formControlName ='acno' name="acno" type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cg">Account Number</label>
+				  <div *ngIf =" this.registerForm.get('acno')?.errors&& this.registerForm.get('acno')?.touched" class=" text-danger ">
+					Invalid Account Number
+				   </div>
+   
+                </div>
+
+
+                <div class="form-outline mb-4">
+                  <input formControlName ='pswd' name="pswd" type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cg">Password</label>
+				  <div *ngIf =" this.registerForm.get('pswd')?.errors&& this.registerForm.get('pswd')?.touched" class=" text-danger">
+					Invalid Password
+				   </div>
+
+                </div>
+				<div class="form-check d-flex justify-content-center mb-5">
+					<input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+					<label class="form-check-label" for="form2Example3g">
+					  I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+					</label>
+				  </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-dark btn-block btn-lg " >Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

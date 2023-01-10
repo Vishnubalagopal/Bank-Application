@@ -1,0 +1,110 @@
+<!-- logout popup -->
+
+<div class="container mt-5" *ngIf = "isLogout">
+  <div class="row text-center">
+    <div class="col">
+      <img class="w-25 d-block m-auto"
+       src="https://preview.redd.it/ounq1mw5kdxy.gif?width=600&s=5b530e7cd463a42738c95ed807acefcb2aa73c4a" alt="">
+      <h4 class="text-dark">Please Wait... You're Signing out....</h4>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf = "!isLogout">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fs-3" ><i class="fa-solid fa-building-columns"></i> Net Banking</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fs-5 " href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" routerLink ="/deposit">Deposit</a></li>
+            <li><a class="dropdown-item" routerLink="/withdraw"> Withdraw</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample" (click)="getBalance()" > Balance Enquiry</a></li>
+
+            
+            <li><a class="dropdown-item"  routerLink ="/transaction"> Transaction History</a></li>
+
+
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item" (click)="deleteAcno()"><i class="fa-solid fa-trash"></i>  Delete Account</button></li>
+            <li><button class="dropdown-item" (click) = "logout()">Sign Out <i class="fa-solid fa-right-from-bracket"></i></button></li>
+
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- delete child -->
+<div class="">
+  <app-delete [serverMsg]="deleteMsg" (onDelete)="deleteParent($event)" (onCancel)="cancel()" [item]="acno"></app-delete>
+</div>
+
+
+<div *ngIf="!confirmMsg">
+
+<section class="bg-image vh-100 " *ngIf="!acno"
+style="background-image: url('https://www.infosys.com/content/dam/infosys-web/en/navigate-your-next/being-resilient/assuring-digital-trust.jpg');background-size: cover;">
+
+  <!-- delete -->
+  <div class="container" [ngClass] ="acno?'hide':'' ">
+    <div class="row">
+        <div class="col-lg-5  mt-5">
+            <h1 style="margin-top:100px ;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Welcome {{user}}</h1>
+            <div class="mt-5">
+            <label > Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, alias pariatur quisquam quidem ad aut dolorem aperiam itaque numquam ab iusto magni ut rerum, iste doloremque? Error ad harum possimus! </label>
+            <div class="collapse" id="collapseExample"> 
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit numquam illo quaerat amet velit laudantium, iusto repellat beatae culpa, maxime officiis, incidunt eligendi temporibus. Impedit nemo eum tempora hic aliquid Lorem ipsum dolor sit amet consectetur adipisicing elit. In nostrum ab eum aut modi, impedit magnam nisi sapiente voluptate libero perspiciatis delectus molestiae numquam perferendis fugit quasi vitae ex at!Lorem Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus, blanditiis. Voluptates, magnam nostrum. Cupiditate voluptas hic quia nulla at magni nesciunt eveniet sit cumque? Porro cumque rerum cupiditate minima cum!
+            </div>
+            <button class="btn btn-primary mt-3" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#collapseExample" 
+            aria-expanded="false" 
+            aria-controls="collapseExample"
+            (click)="collapse()"
+             >
+              <label *ngIf="isCollapse" >Read more</label>
+              <label *ngIf="!isCollapse" >Read less</label>
+            </button>
+          </div>
+        </div>
+
+
+    </div>
+
+  </div>
+</section>
+</div>
+</div>
+
+<div class="offcanvas offcanvas-start"  tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Account Statement</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="mb-5">
+      <img src="https://cdn0.iconfinder.com/data/icons/analytic-investment-and-balanced-scorecard/512/43_Balance_law_justice_finance-256.png" alt="">
+    </div>
+    <div style="font-size: 20px;">
+      Hi <b style="color: rgb(138, 86, 86);">{{user}}</b>,<br>
+      <span>{{balance}}</span>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  

@@ -1,0 +1,7 @@
+img{
+    height: 100%;
+}
+span img{
+    height: 70px;
+    width: 70px;
+}

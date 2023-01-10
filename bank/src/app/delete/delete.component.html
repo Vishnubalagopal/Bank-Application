@@ -1,0 +1,29 @@
+<div class="conatainer mt-5 " *ngIf = "item && !serverMsg">
+    <div class="row text-center">
+        <div class="col-3"></div>
+        <div class="col-6 shadow p-3 mb-5 bg-dark text-light rounded" id="box">
+            <div class="h4">
+                Are you sure, Do you want to delete this account {{item}} ?
+            </div><br>
+            <button (click)="deleteChild()" class="btn btn-danger">Yes</button> &nbsp;
+            <button (click)="cancel()" class="btn btn-success">No</button>
+
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+
+
+    <!-- delete popup -->
+
+    <div class="container mt-5 del" *ngIf = "!item && serverMsg">
+      <div class="row text-center">
+        <div class="col">
+          <img class="w-25 d-block m-auto"
+           src="https://assets.materialup.com/uploads/03539ca1-660c-4266-8d9c-f45849e66cbf/preview.gif" alt="">
+          <h4 class="text-dark">Please Wait... Your Account is deleting....</h4>
+        </div>
+      </div>
+    </div>
